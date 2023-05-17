@@ -10,7 +10,7 @@ export const BooksSeparator = styled.View`
   padding: 10px;
 `;
 
-export const BookContainer = styled.TouchableOpacity`
+export const BookContainer = styled.View`
   width: 48%;
   border: ${props => `2px solid ${colors?.grey}`};
   align-items: center;

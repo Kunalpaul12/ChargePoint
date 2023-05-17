@@ -3,9 +3,5 @@
     "searchingBooks": "Please wait while we are searching Books...",
     "noSearchedBooksFound":"No books found!\nWe can't find any books matching\nyour search.",
     "searchAndEnjoy":"Search and enjoy books.",
-    "tryAgain":"Try Again",
-    "Year":"Year",
-    "Rating":"Rating",
-    "Language":"Language",
-    "Contributor":"Contributor"
+    "tryAgain":"Try Again"
 }
