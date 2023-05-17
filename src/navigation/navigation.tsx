@@ -19,6 +19,7 @@ const TabBarIcon: React.FC<TabBarIconProps> = ({image}) => {
 };
 
 const HomeStack = createStackNavigator();
+const SearchStack = createStackNavigator();
 
 function HomeNavigation() {
   return (
@@ -39,6 +40,25 @@ function HomeNavigation() {
   );
 }
 
+function SearchNavigation() {
+  return (
+    <SearchStack.Navigator>
+      <SearchStack.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerShown,
+        }}
+      />
+      <SearchStack.Screen
+        name="Details"
+        component={Details}
+        options={{headerBackTitleVisible: false, headerTitleAlign: 'center'}}
+      />
+    </SearchStack.Navigator>
+  );
+}
+
 function RootNavigation() {
   return (
     <Tab.Navigator>
@@ -55,7 +75,7 @@ function RootNavigation() {
       />
       <Tab.Screen
         name="Search"
-        component={Search}
+        component={SearchNavigation}
         options={{
           tabBarIcon: ({focused}) => (
             <TabBarIcon image={focused ? searchActive : searchDisable} />

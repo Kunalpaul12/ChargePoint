@@ -89,7 +89,7 @@ const Search: React.FC<Props> = ({navigation}) => {
           ? title.substring(0, 20) + ' ...'
           : title;
       return (
-        <BookContainer>
+        <BookContainer onPress={() => navigation.push('Details', {item})}>
           <Poster
             imageUrl={`${API.poster}${isbn}-M.jpg?default=false `}
             imageStyle={styles.booksImage}
