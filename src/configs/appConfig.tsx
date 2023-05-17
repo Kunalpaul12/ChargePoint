@@ -12,3 +12,4 @@ export const DEBOUNCING_TIME = 1000;
 export const BOOK_TITLE_LENGTH = 20;
 export const SEARCH_LIMIT = 10;
 export const BOOK_LIST_COLUMNS = 2;
+export const HEADER_TITLE_LENGTH_LIMIT = 30;

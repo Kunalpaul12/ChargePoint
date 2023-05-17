@@ -15,10 +15,16 @@ export const searchBooks = async (books: string, page: number) => {
     result.data = booksList.docs.map((booksDetails: any, index: number) => ({
       id: booksDetails?.key,
       title: booksDetails?.title_sort,
-      isbn: booksDetails?.isbn?.length > 0 ? booksDetails?.isbn[0] : undefined,
+      isbn: booksDetails?.isbn?.length > 0 ? booksDetails?.isbn[0] : null,
       year: booksDetails?.first_publish_year,
       ratingAverage:
         booksDetails?.ratings_average || booksDetails?.currently_reading_count,
+      language:
+        booksDetails?.language?.length > 0 ? booksDetails?.language : null,
+      contributor:
+        booksDetails?.contributor?.length > 0
+          ? booksDetails?.contributor
+          : null,
     }));
   } catch (error) {
     result.success = 0;
