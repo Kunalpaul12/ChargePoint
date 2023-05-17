@@ -27,3 +27,9 @@ export const InnerContainer = styled.View`
   width: ${width / 1.1};
   align-self: center;
 `;
+
+export const ComponentsContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
