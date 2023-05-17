@@ -14,6 +14,7 @@ import {
   DEBOUNCING_TIME,
   BOOK_TITLE_LENGTH,
   BOOK_LIST_COLUMNS,
+  SEARCH_LIMIT,
 } from '../../configs/appConfig';
 import {
   _Image as Poster,
@@ -54,6 +55,13 @@ const Search: React.FC<Props> = ({navigation}) => {
     return () => clearTimeout(searchTimer);
   }, [searchPhrase]);
 
+  useEffect(() => {
+    if (loadMore) {
+      pageRef.current = pageRef.current + 1;
+      searchCall();
+    }
+  }, [loadMore]);
+
   const searchCall = async () => {
     if (error) {
       setError(false);
@@ -70,7 +78,7 @@ const Search: React.FC<Props> = ({navigation}) => {
     } else {
       setError(true);
     }
-    setLoading(false);
+    loadMore ? setLoadMore(false) : setLoading(false);
   };
 
   const listBooks = () => {
@@ -83,7 +91,7 @@ const Search: React.FC<Props> = ({navigation}) => {
       return (
         <BookContainer>
           <Poster
-            imageUrl={`${API.poster}${isbn}-M.jpg`}
+            imageUrl={`${API.poster}${isbn}-M.jpg?default=false `}
             imageStyle={styles.booksImage}
           />
           <BookDetailsContainer>
@@ -133,9 +141,9 @@ const Search: React.FC<Props> = ({navigation}) => {
         contentContainerStyle={styles?.BookContentContainer}
         onEndReachedThreshold={0.01}
         onEndReached={() => {
-          setLoadMore(true);
-          pageRef.current = pageRef.current + 1;
-          searchCall();
+          if (searchData?.length > SEARCH_LIMIT - 1) {
+            setLoadMore(true);
+          }
         }}
         ListFooterComponent={() => (
           <ListFooterLoader size="small" loadMore={loadMore} />

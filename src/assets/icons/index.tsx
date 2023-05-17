@@ -8,4 +8,5 @@ export default {
   notFound: require('./not_found.png'),
   bookSearch: require('./book_search.png'),
   Error: require('./error.png'),
+  BookCoverNotFound: require('./bookCoverNotFound.png'),
 };
