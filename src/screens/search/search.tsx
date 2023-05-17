@@ -91,7 +91,7 @@ const Search: React.FC<Props> = ({navigation}) => {
       return (
         <BookContainer>
           <Poster
-            imageUrl={`${API.poster}${isbn}-M.jpg`}
+            imageUrl={`${API.poster}${isbn}-M.jpg?default=false `}
             imageStyle={styles.booksImage}
           />
           <BookDetailsContainer>
