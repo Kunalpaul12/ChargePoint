@@ -12,7 +12,7 @@ import styles, {
   BooksSeparator,
   BookDetailsContainer,
 } from './styles';
-import {_Image as Poster, Error, ListFooterLoader} from '..';
+import {_Image as Poster, Error, ListFooterLoader, Rating} from '..';
 import {_Text} from '../../styles/styles';
 import {FONTS_TYPE} from '../../constants/fonts';
 import Language from '../../language/en.json';
@@ -42,20 +42,28 @@ const BookList: React.FC<Props> = ({
     return (
       <BookContainer onPress={() => navigation.push('Details', {item})}>
         <Poster
-          imageUrl={`${API.poster}${coverID}-M.jpg?default=false `}
+          imageUrl={
+            coverID ? `${API.poster}${coverID}-M.jpg?default=false ` : null
+          }
           imageStyle={styles.booksImage}
+          staticImageData={!coverID ? StaticImage?.notFound : null}
         />
         <BookDetailsContainer>
           <_Text textAlign={'left'} fontFamily={FONTS_TYPE.semiBold}>
             {bookTitle}
           </_Text>
-          <_Text textAlign={'left'} fontSize={12}>
+          <_Text textAlign={'left'} fontSize={12} paddingTop={2}>
             Author: {author}
           </_Text>
-          <_Text textAlign={'left'} fontSize={12}>
+          <_Text textAlign={'left'} fontSize={12} paddingTop={2}>
             Rating: {ratingAverage}
           </_Text>
-          <_Text textAlign={'left'} fontSize={12}>
+          <Rating
+            containerStyle={styles?.AirbnbRating}
+            rating={ratingAverage}
+            size={15}
+          />
+          <_Text textAlign={'left'} fontSize={12} paddingTop={2}>
             Publish: {year}
           </_Text>
         </BookDetailsContainer>

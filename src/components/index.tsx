@@ -4,5 +4,15 @@ import _Image from './image/image';
 import SearchBar from './searchBar/searchBar';
 import BookList from './bookList/list';
 import _Switch from './switch/switch';
+import Rating from './rating/rating';
 
-export {Loader, Error, _Image, SearchBar, ListFooterLoader, BookList, _Switch};
+export {
+  Loader,
+  Error,
+  _Image,
+  SearchBar,
+  ListFooterLoader,
+  BookList,
+  _Switch,
+  Rating,
+};

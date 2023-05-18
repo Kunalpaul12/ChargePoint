@@ -4,7 +4,7 @@ import styles from './styles';
 import StaticImage from '../../assets/icons';
 
 type Props = {
-  imageUrl?: string;
+  imageUrl?: string | null;
   imageStyle?: any;
   staticImageData?: any;
 };

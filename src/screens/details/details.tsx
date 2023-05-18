@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
 import {Container, InnerContainer, _Text} from '../../styles/styles';
-import {_Image as Poster} from '../../components';
+import {_Image as Poster, Rating} from '../../components';
 import styles, {
   InfoContainer,
   PosterAndBookInfoContainer,
@@ -13,6 +13,7 @@ import colors from '../../colors/colors';
 import {HEADER_TITLE_LENGTH_LIMIT, API} from '../../configs/appConfig';
 import {FONTS_TYPE} from '../../constants/fonts';
 import Language from '../../language/en.json';
+import StaticImage from '../../assets/icons';
 
 type Props = {
   navigation: any;
@@ -41,8 +42,13 @@ const Details: React.FC<Props> = ({navigation, route}) => {
             <PosterAndBookInfoContainer>
               <PosterContainer>
                 <Poster
-                  imageUrl={`${API.poster}${coverID}-M.jpg?default=false `}
+                  imageUrl={
+                    coverID
+                      ? `${API.poster}${coverID}-M.jpg?default=false `
+                      : null
+                  }
                   imageStyle={styles?.poster}
+                  staticImageData={!coverID ? StaticImage?.notFound : null}
                 />
               </PosterContainer>
 
@@ -62,6 +68,11 @@ const Details: React.FC<Props> = ({navigation, route}) => {
                 <_Text textAlign={'left'} color={colors?.text} paddingTop={10}>
                   {Language.Rating} : {ratingAverage}
                 </_Text>
+                <Rating
+                  containerStyle={styles?.AirbnbRating}
+                  rating={ratingAverage}
+                  size={20}
+                />
                 {language?.length && (
                   <_Text
                     textAlign={'left'}

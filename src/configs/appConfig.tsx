@@ -11,6 +11,10 @@ export const HEADER_TITLE_LENGTH_LIMIT = 30;
 export const AUTHOR_BOOKS_KEY_SEARCH_LIMIT = 2;
 export const ANDROID_SWITCH_SCALE = 1.4;
 export const IOS_SWITCH_SCALE = 1;
+export const RATING_STAR_COUNT = 5;
+export const RATING_DEFAULT_SIZE = 20;
+export const SHOW_RATING = false;
+export const USER_RATING_DISABLE = true;
 export const API_FIELDS = encodeURI(
   'fields=key,title,cover_i,first_publish_year,edition_count,contributor,ratings_average,title_sort,language,author_name',
 );
