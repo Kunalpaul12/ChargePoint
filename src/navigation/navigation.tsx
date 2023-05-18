@@ -32,7 +32,7 @@ function HomeNavigation() {
         }}
       />
       <HomeStack.Screen
-        name="Details"
+        name="HomeBookDetails"
         component={Details}
         options={{headerBackTitleVisible: false, headerTitleAlign: 'center'}}
       />

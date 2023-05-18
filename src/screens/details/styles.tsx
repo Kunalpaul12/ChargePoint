@@ -9,7 +9,7 @@ export const PosterAndBookInfoContainer = styled.View`
 
 export const PosterContainer = styled.View`
   width: 40%;
-  height:200
+  height:200px
   align-items: flex-start;
 `;
 
@@ -28,5 +28,10 @@ export default {
     width: '100%',
     height: '100%',
     resizeMode: 'contain',
+  },
+  AirbnbRating: {
+    alignItems: 'flex-start',
+    alignSelf: 'flex-start',
+    paddingTop: 10,
   },
 };

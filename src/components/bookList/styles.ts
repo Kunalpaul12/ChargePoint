@@ -34,4 +34,9 @@ export default {
     height: 50,
     paddingTop: 20,
   },
+  AirbnbRating: {
+    alignItems: 'flex-start',
+    alignSelf: 'flex-start',
+    paddingTop: 2,
+  },
 };

@@ -74,6 +74,7 @@ const Home: React.FC<Props> = ({navigation}) => {
             setLoadMore={setLoadMore}
             searchPhrase={''}
             loadMore={loadMore}
+            fromHome={true}
           />
         )}
       </InnerContainer>

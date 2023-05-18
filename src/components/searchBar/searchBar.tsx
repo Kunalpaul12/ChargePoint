@@ -1,6 +1,10 @@
 import React from 'react';
 import {TextInput, TouchableOpacity} from 'react-native';
-import styles, {SearchBarContainer, SearchView} from './styles';
+import styles, {
+  SearchBarContainer,
+  SearchView,
+  FilterTouchable,
+} from './styles';
 import StaticImage from '../../assets/icons';
 import Language from '../../language/en.json';
 import {_Image} from '../index';
@@ -10,14 +14,16 @@ type Props = {
   searchPhrase: string;
   setSearchPhrase: (value: string) => void;
   setClicked: (value: boolean) => void;
+  setFilterModalVisible: (value: boolean) => void;
 };
 
 const SearchBar: React.FC<Props> = ({
   searchPhrase,
   setSearchPhrase,
   setClicked,
+  setFilterModalVisible,
 }) => {
-  const {cancel, searchDisable} = StaticImage;
+  const {cancel, searchDisable, filter} = StaticImage;
 
   return (
     <SearchBarContainer>
@@ -41,6 +47,10 @@ const SearchBar: React.FC<Props> = ({
           <_Image imageStyle={styles?.iconsCancel} staticImageData={cancel} />
         </TouchableOpacity>
       </SearchView>
+
+      <FilterTouchable onPress={() => setFilterModalVisible(true)}>
+        <_Image imageStyle={styles?.iconsCancel} staticImageData={filter} />
+      </FilterTouchable>
     </SearchBarContainer>
   );
 };

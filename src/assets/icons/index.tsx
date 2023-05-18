@@ -10,4 +10,5 @@ export default {
   Error: require('./error.png'),
   BookCoverNotFound: require('./bookCoverNotFound.png'),
   OpenBook: require('./open_book.png'),
+  filter: require('./filter.png'),
 };
