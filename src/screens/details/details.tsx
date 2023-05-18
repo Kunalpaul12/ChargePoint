@@ -20,7 +20,7 @@ type Props = {
 };
 
 const Details: React.FC<Props> = ({navigation, route}) => {
-  const {title, coverID, year, ratingAverage, language, contributor} =
+  const {title, coverID, year, ratingAverage, language, contributor, author} =
     route.params?.item;
 
   const headerTitle =
@@ -52,6 +52,9 @@ const Details: React.FC<Props> = ({navigation, route}) => {
                   color={colors?.text}
                   fontFamily={FONTS_TYPE.semiBold}>
                   {title}
+                </_Text>
+                <_Text textAlign={'left'} color={colors?.text} paddingTop={10}>
+                  Author: {author}
                 </_Text>
                 <_Text textAlign={'left'} color={colors?.text} paddingTop={10}>
                   {Language.Year} : {year}

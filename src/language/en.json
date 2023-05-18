@@ -8,5 +8,10 @@
     "Rating":"Rating",
     "Language":"Language",
     "Contributor":"Contributor",
-    "OpenLibrary":"Open\nLibrary"
+    "OpenLibrary":"Open\nLibrary",
+    "apply":"Apply",
+    "searchBy":"Search By",
+    "searchByName":"Name",
+    "searchByAuthor":"Author"
+
 }

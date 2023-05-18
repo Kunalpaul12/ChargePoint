@@ -34,7 +34,7 @@ const BookList: React.FC<Props> = ({
   loadMore,
 }) => {
   const _renderBooks = (item: any) => {
-    const {title, coverID, year, ratingAverage} = item;
+    const {title, coverID, year, ratingAverage, author} = item;
     const bookTitle =
       title?.length > BOOK_TITLE_LENGTH
         ? title.substring(0, 20) + ' ...'
@@ -48,6 +48,9 @@ const BookList: React.FC<Props> = ({
         <BookDetailsContainer>
           <_Text textAlign={'left'} fontFamily={FONTS_TYPE.semiBold}>
             {bookTitle}
+          </_Text>
+          <_Text textAlign={'left'} fontSize={12}>
+            Author: {author}
           </_Text>
           <_Text textAlign={'left'} fontSize={12}>
             Rating: {ratingAverage}

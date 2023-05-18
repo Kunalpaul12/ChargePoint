@@ -3,6 +3,7 @@ import {
   SEARCH_LIMIT,
   API_FIELDS,
   RANDOM_SEARCH_LIMIT,
+  AUTHOR_API_FIELDS,
 } from '../configs/appConfig';
 
 export type ResponseProps = {
@@ -23,6 +24,10 @@ const sortBooks = (booksList: any, page: number) => {
       booksDetails?.language?.length > 0 ? booksDetails?.language : null,
     contributor:
       booksDetails?.contributor?.length > 0 ? booksDetails?.contributor : null,
+    author:
+      booksDetails?.author_name?.length > 0
+        ? booksDetails?.author_name[0]
+        : null,
   }));
 };
 
@@ -50,6 +55,29 @@ export const searchRandomBooks = async (page: number) => {
     );
     const booksList: any = await res.json();
     result.data = sortBooks(booksList, page);
+  } catch (error) {
+    result.success = 0;
+    result.data = error;
+  } finally {
+    return result;
+  }
+};
+
+export const searchAuthorBooks = async (books: string, page: number) => {
+  const result: ResponseProps = {success: 1, data: []};
+  try {
+    const res = await fetch(
+      `${API?.author}${books}&${AUTHOR_API_FIELDS}&limit=${SEARCH_LIMIT}`,
+    );
+    const authorsKeys: any = await res.json();
+    for (let i = 0; i < authorsKeys?.docs?.length; i++) {
+      const key = authorsKeys?.docs[i]?.key;
+      const authorRes = await fetch(
+        `${API?.authorBook}&offset=${page}&author=${key}}`,
+      );
+      const authorsBooks: any = await authorRes.json();
+      result.data = [...result.data, ...sortBooks(authorsBooks, page)];
+    }
   } catch (error) {
     result.success = 0;
     result.data = error;

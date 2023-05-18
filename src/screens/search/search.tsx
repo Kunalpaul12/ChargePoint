@@ -1,11 +1,13 @@
 import React, {useState, useEffect, useRef} from 'react';
+import {Modal} from 'react-native';
 import {Container, InnerContainer} from '../../styles/styles';
 import {SearchBar, BookList} from '../../components';
 import {SearchWrapper} from './styles';
 import {SEARCH_LENGTH_LIMIT, DEBOUNCING_TIME} from '../../configs/appConfig';
 import {Loader} from '../../components';
 import Language from '../../language/en.json';
-import {searchBooks} from '../../network/network';
+import {searchBooks, searchAuthorBooks} from '../../network/network';
+import {FilterModal} from './components';
 
 type Props = {
   navigation: any;
@@ -18,7 +20,9 @@ const Search: React.FC<Props> = ({navigation}) => {
   const [error, setError] = useState<boolean>(false);
   const [searchData, setSearchData] = useState<any>([]);
   const [loadMore, setLoadMore] = useState<boolean>(false);
-  let pageRef = useRef<number>(1);
+  const [filterModalVisible, setFilterModalVisible] = useState<boolean>(true);
+  const [searchByName, setSearchByName] = useState<boolean>(true);
+  let pageRef = useRef<number>(0);
 
   useEffect(() => {
     const shouldSearch = searchPhrase?.length > SEARCH_LENGTH_LIMIT;
@@ -49,7 +53,10 @@ const Search: React.FC<Props> = ({navigation}) => {
     if (!loading && !loadMore) {
       setLoading(true);
     }
-    const res = await searchBooks(searchPhrase, pageRef.current);
+    const res = searchByName
+      ? await searchBooks(searchPhrase, pageRef.current)
+      : await searchAuthorBooks(searchPhrase, pageRef.current);
+
     const success: number = res?.success;
     if (success) {
       loadMore
@@ -64,12 +71,23 @@ const Search: React.FC<Props> = ({navigation}) => {
   return (
     <Container>
       <InnerContainer>
+        <Modal
+          animationType="slide"
+          visible={filterModalVisible}
+          transparent={true}>
+          <FilterModal
+            searchByName={searchByName}
+            setSearchByName={setSearchByName}
+            setFilterModalVisible={setFilterModalVisible}
+          />
+        </Modal>
         <SearchWrapper>
           <SearchBar
             searchPhrase={searchPhrase}
             setSearchPhrase={setSearchPhrase}
             clicked={clicked}
             setClicked={setClicked}
+            setFilterModalVisible={setFilterModalVisible}
           />
         </SearchWrapper>
         {loading && searchPhrase.length > SEARCH_LENGTH_LIMIT && (

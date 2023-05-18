@@ -17,6 +17,10 @@ export const SearchView = styled.View`
   height: 50px;
 `;
 
+export const FilterTouchable = styled.TouchableOpacity`
+  margin-left: 40px;
+`;
+
 export default {
   input: {
     fontSize: 20,
