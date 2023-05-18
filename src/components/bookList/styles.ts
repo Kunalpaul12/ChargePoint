@@ -28,7 +28,7 @@ export default {
   booksImage: {
     width: 100,
     height: 150,
-    resizeMode: 'stretch',
+    resizeMode: 'contain',
   },
   footerLoaderContainer: {
     height: 50,
