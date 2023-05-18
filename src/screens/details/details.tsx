@@ -20,7 +20,7 @@ type Props = {
 };
 
 const Details: React.FC<Props> = ({navigation, route}) => {
-  const {title, isbn, year, ratingAverage, language, contributor} =
+  const {title, coverID, year, ratingAverage, language, contributor} =
     route.params?.item;
 
   const headerTitle =
@@ -41,7 +41,7 @@ const Details: React.FC<Props> = ({navigation, route}) => {
             <PosterAndBookInfoContainer>
               <PosterContainer>
                 <Poster
-                  imageUrl={`${API.poster}${isbn}-M.jpg?default=false `}
+                  imageUrl={`${API.poster}${coverID}-M.jpg?default=false `}
                   imageStyle={styles?.poster}
                 />
               </PosterContainer>
