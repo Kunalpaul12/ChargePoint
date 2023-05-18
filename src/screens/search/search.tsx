@@ -20,8 +20,9 @@ const Search: React.FC<Props> = ({navigation}) => {
   const [error, setError] = useState<boolean>(false);
   const [searchData, setSearchData] = useState<any>([]);
   const [loadMore, setLoadMore] = useState<boolean>(false);
-  const [filterModalVisible, setFilterModalVisible] = useState<boolean>(true);
+  const [filterModalVisible, setFilterModalVisible] = useState<boolean>(false);
   const [searchByName, setSearchByName] = useState<boolean>(true);
+  const [refresh, setRefresh] = useState<boolean>(false);
   let pageRef = useRef<number>(0);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const Search: React.FC<Props> = ({navigation}) => {
       }
     }, DEBOUNCING_TIME);
     return () => clearTimeout(searchTimer);
-  }, [searchPhrase]);
+  }, [searchPhrase, refresh]);
 
   useEffect(() => {
     if (loadMore) {
@@ -79,6 +80,8 @@ const Search: React.FC<Props> = ({navigation}) => {
             searchByName={searchByName}
             setSearchByName={setSearchByName}
             setFilterModalVisible={setFilterModalVisible}
+            setRefresh={setRefresh}
+            refresh={refresh}
           />
         </Modal>
         <SearchWrapper>

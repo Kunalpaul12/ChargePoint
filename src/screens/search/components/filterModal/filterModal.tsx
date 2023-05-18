@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   ModalContainer,
   ModalInnerContainer,
@@ -16,13 +16,28 @@ type Props = {
   searchByName: boolean;
   setSearchByName: (value: boolean) => void;
   setFilterModalVisible: (value: boolean) => void;
+  setRefresh: (value: boolean) => void;
+  refresh: boolean;
 };
 
 const FilterModal: React.FC<Props> = ({
   searchByName,
   setSearchByName,
   setFilterModalVisible,
+  setRefresh,
+  refresh,
 }) => {
+  const [name, setName] = useState<boolean>(searchByName);
+  const [author, setAuthor] = useState<boolean>(!searchByName);
+
+  const Apply = () => {
+    setFilterModalVisible(false);
+    if (searchByName !== name) {
+      setRefresh(!refresh);
+      setSearchByName(name);
+    }
+  };
+
   return (
     <ModalContainer>
       <ModalInnerContainer>
@@ -39,9 +54,10 @@ const FilterModal: React.FC<Props> = ({
               {Language?.searchByName}
             </_Text>
             <_Switch
-              enable={searchByName}
+              enable={name}
               action={() => {
-                setSearchByName(true);
+                setName(true);
+                setAuthor(false);
               }}
             />
           </ActionsContainer>
@@ -50,17 +66,15 @@ const FilterModal: React.FC<Props> = ({
               {Language?.searchByAuthor}
             </_Text>
             <_Switch
-              enable={!searchByName}
+              enable={author}
               action={() => {
-                setSearchByName(false);
+                setAuthor(true);
+                setName(false);
               }}
             />
           </ActionsContainer>
 
-          <ApplyTouchable
-            onPress={() => {
-              setFilterModalVisible(false);
-            }}>
+          <ApplyTouchable onPress={() => Apply()}>
             <_Text fontFamily={FONTS_TYPE?.semiBold} color={colors?.textWhite}>
               {Language?.apply}
             </_Text>
