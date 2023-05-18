@@ -24,6 +24,7 @@ type Props = {
   searchPhrase: string;
   setLoadMore: (value: boolean) => void;
   loadMore: boolean;
+  fromHome?: boolean;
 };
 
 const BookList: React.FC<Props> = ({
@@ -32,6 +33,7 @@ const BookList: React.FC<Props> = ({
   searchPhrase,
   setLoadMore,
   loadMore,
+  fromHome,
 }) => {
   const _renderBooks = (item: any) => {
     const {title, coverID, year, ratingAverage, author} = item;
@@ -40,7 +42,11 @@ const BookList: React.FC<Props> = ({
         ? title.substring(0, 20) + ' ...'
         : title;
     return (
-      <BookContainer onPress={() => navigation.push('Details', {item})}>
+      <BookContainer
+        onPress={() => {
+          const screenName = fromHome ? 'HomeBookDetails' : 'Details';
+          navigation.push(screenName, {item});
+        }}>
         <Poster
           imageUrl={
             coverID ? `${API.poster}${coverID}-M.jpg?default=false ` : null

@@ -9,7 +9,7 @@ export const PosterAndBookInfoContainer = styled.View`
 
 export const PosterContainer = styled.View`
   width: 40%;
-  height:200
+  height:200px
   align-items: flex-start;
 `;
 
