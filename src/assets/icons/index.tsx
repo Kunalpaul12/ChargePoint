@@ -9,4 +9,5 @@ export default {
   bookSearch: require('./book_search.png'),
   Error: require('./error.png'),
   BookCoverNotFound: require('./bookCoverNotFound.png'),
+  OpenBook: require('./open_book.png'),
 };

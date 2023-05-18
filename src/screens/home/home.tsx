@@ -1,9 +1,12 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {Container, InnerContainer} from '../../styles/styles';
+import {Container, InnerContainer, _Text} from '../../styles/styles';
 import {Loader} from '../../components';
 import Language from '../../language/en.json';
 import {searchRandomBooks} from '../../network/network';
-import {BookList} from '../../components';
+import {BookList, _Image} from '../../components';
+import styles, {HeaderContainer} from './styles';
+import StaticImage from '../../assets/icons';
+import {FONTS_TYPE} from '../../constants/fonts';
 
 type Props = {
   navigation: any;
@@ -48,6 +51,19 @@ const Home: React.FC<Props> = ({navigation}) => {
   return (
     <Container>
       <InnerContainer>
+        <HeaderContainer>
+          <_Image
+            imageStyle={styles?.booksImage}
+            staticImageData={StaticImage?.OpenBook}
+          />
+          <_Text
+            textAlign={'left'}
+            fontFamily={FONTS_TYPE.semiBold}
+            paddingLeft={15}>
+            {Language?.OpenLibrary}
+          </_Text>
+        </HeaderContainer>
+
         {loading && (
           <Loader size="large" loadingText={Language?.searchingBooks} />
         )}
