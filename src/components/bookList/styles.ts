@@ -26,7 +26,7 @@ export default {
     height: 100,
   },
   booksImage: {
-    width: 150,
+    width: 100,
     height: 150,
     resizeMode: 'contain',
   },

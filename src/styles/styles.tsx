@@ -24,7 +24,7 @@ export const _Text = styled.Text`
 
 export const InnerContainer = styled.View`
   flex: 1;
-  width: ${width / 1.1};
+  width: ${width / 1.1}px;
   align-self: center;
 `;
 
