@@ -7,6 +7,7 @@ import {BookList, _Image} from '../../components';
 import styles, {HeaderContainer} from './styles';
 import StaticImage from '../../assets/icons';
 import {FONTS_TYPE} from '../../constants/fonts';
+import SplashScreen from 'react-native-splash-screen';
 
 type Props = {
   navigation: any;
@@ -20,6 +21,7 @@ const Home: React.FC<Props> = ({navigation}) => {
   let pageRef = useRef<number>(1);
 
   useEffect(() => {
+    SplashScreen.hide();
     searchCall();
   }, []);
   useEffect(() => {
