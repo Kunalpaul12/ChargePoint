@@ -42,7 +42,7 @@ npm install --global yarn
 
 - To run on android (cd android && ./gradlew clean && cd .. && npx react-native run-android)
 
-- To run on ios (cd ios && pod deintegrate && npx pod-install && xcodebuild clean && cd .. && npx react-native run-ios)
+- To run on ios (cd ios && pod deintegrate && npx pod-install && cd .. && npx react-native run-ios)
 
 # Debug Build
 
