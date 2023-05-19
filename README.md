@@ -46,4 +46,4 @@ npm install --global yarn
 
 # Debug Build
 
-A debug build apk (assignment.apk) for android is at the root of the project
+A debug build apk (assignment.apk) for android is at the root of the project. As this app is not link to any certificate you have to allow unknown apps from the settings
