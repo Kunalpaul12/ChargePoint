@@ -13,6 +13,10 @@
     "searchBy":"Search By",
     "searchByName":"Name",
     "searchByAuthor":"Author",
-    "cancel":"Cancel"
-
+    "cancel":"Cancel",
+    "description":"Description",
+    "subjects":"Subjects",
+    "searchingBooksDetail": "Fetching Books Details...",
+    "readLess":"Read less...",
+    "readMore":"Read more..."
 }

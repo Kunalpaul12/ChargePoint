@@ -14,6 +14,7 @@ export const IOS_SWITCH_SCALE = 1;
 export const RATING_STAR_COUNT = 5;
 export const RATING_DEFAULT_SIZE = 20;
 export const SHOW_RATING = false;
+export const NO_OF_LINES = 3;
 export const USER_RATING_DISABLE = true;
 export const API_FIELDS = encodeURI(
   'fields=key,title,cover_i,first_publish_year,edition_count,contributor,ratings_average,title_sort,language,author_name',
@@ -29,4 +30,5 @@ export const API: any = {
   authorBook:
     apiBase +
     `/search.json?${API_FIELDS}&limit=${AUTHOR_BOOKS_KEY_SEARCH_LIMIT}`,
+  bookDetail: `${apiBase}`,
 };
