@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator} from 'react-native';
+import {ActivityIndicator, Keyboard} from 'react-native';
 import {_Text, ComponentsContainer} from '../../styles/styles';
 
 type Props = {
@@ -13,8 +13,9 @@ type FooterProps = {
 };
 
 const Loader: React.FC<Props> = ({size, loadingText}) => {
+  const keyboardVisible = Keyboard.isVisible();
   return (
-    <ComponentsContainer>
+    <ComponentsContainer keyboardVisible={keyboardVisible}>
       <ActivityIndicator size={size || 'large'} />
       <_Text paddingTop={15}>{loadingText}</_Text>
     </ComponentsContainer>

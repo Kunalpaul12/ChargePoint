@@ -32,4 +32,5 @@ export const ComponentsContainer = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  padding-bottom: ${(props: any) => (props.keyboardVisible ? '50px' : '0px')};
 `;

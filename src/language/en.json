@@ -12,6 +12,11 @@
     "apply":"Apply",
     "searchBy":"Search By",
     "searchByName":"Name",
-    "searchByAuthor":"Author"
-
+    "searchByAuthor":"Author",
+    "cancel":"Cancel",
+    "description":"Description",
+    "subjects":"Subjects",
+    "searchingBooksDetail": "Fetching Books Details...",
+    "readLess":"Read less...",
+    "readMore":"Read more..."
 }

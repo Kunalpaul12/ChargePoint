@@ -28,6 +28,8 @@ const sortBooks = (booksList: any, page: number) => {
       booksDetails?.author_name?.length > 0
         ? booksDetails?.author_name[0]
         : null,
+    cover_edition_key: booksDetails?.cover_edition_key,
+    bookKey: booksDetails?.key,
   }));
 };
 
@@ -78,6 +80,23 @@ export const searchAuthorBooks = async (books: string, page: number) => {
       const authorsBooks: any = await authorRes.json();
       result.data = [...result.data, ...sortBooks(authorsBooks, page)];
     }
+  } catch (error) {
+    result.success = 0;
+    result.data = error;
+  } finally {
+    return result;
+  }
+};
+
+export const bookDetails = async (workKey: string) => {
+  const result: ResponseProps = {success: 1, data: []};
+  try {
+    const res = await fetch(`${API?.bookDetail}${workKey}.json`);
+    const booksDetailsJson: any = await res.json();
+    result.data = {
+      description: booksDetailsJson?.description?.value,
+      subjects: booksDetailsJson?.subjects,
+    };
   } catch (error) {
     result.success = 0;
     result.data = error;
