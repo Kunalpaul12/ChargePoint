@@ -28,12 +28,27 @@ export const ActionsContainer = styled.View`
   align-items: center;
 `;
 
+export const ButtonContainer = styled.View`
+  flex-direction: row;
+  margin-top: 25px;
+`;
+
 export const ApplyTouchable = styled.TouchableOpacity`
-  margin-top: 40px;
   align-items: center;
   justify-content: center;
-  background-color: ${colors?.blue};
+  background-color: ${props => (props.active ? colors?.blue : colors?.grey)};
   border-radius: 10px;
   height: 50px;
   width: 100px;
+  margin-left: ${props => props?.marginLeft || '0px'};
+`;
+
+export const CancelTouchable = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+  border: ${props => `2px solid ${colors?.grey}`};
+  border-radius: 10px;
+  height: 50px;
+  width: 100px;
+  margin-left: 20px;
 `;

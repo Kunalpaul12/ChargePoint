@@ -5,6 +5,8 @@ import {
   ActionsContainer,
   ModalBottomContainer,
   ApplyTouchable,
+  ButtonContainer,
+  CancelTouchable,
 } from './styles';
 import {_Text} from '../../../../styles/styles';
 import {FONTS_TYPE} from '../../../../constants/fonts';
@@ -32,10 +34,8 @@ const FilterModal: React.FC<Props> = ({
 
   const Apply = () => {
     setFilterModalVisible(false);
-    if (searchByName !== name) {
-      setRefresh(!refresh);
-      setSearchByName(name);
-    }
+    setRefresh(!refresh);
+    setSearchByName(name);
   };
 
   return (
@@ -73,12 +73,23 @@ const FilterModal: React.FC<Props> = ({
               }}
             />
           </ActionsContainer>
-
-          <ApplyTouchable onPress={() => Apply()}>
-            <_Text fontFamily={FONTS_TYPE?.semiBold} color={colors?.textWhite}>
-              {Language?.apply}
-            </_Text>
-          </ApplyTouchable>
+          <ButtonContainer>
+            <ApplyTouchable
+              disabled={searchByName === name}
+              active={searchByName !== name}
+              onPress={() => Apply()}>
+              <_Text
+                fontFamily={FONTS_TYPE?.semiBold}
+                color={colors?.textWhite}>
+                {Language?.apply}
+              </_Text>
+            </ApplyTouchable>
+            <CancelTouchable onPress={() => setFilterModalVisible(false)}>
+              <_Text fontFamily={FONTS_TYPE?.semiBold} color={colors?.text}>
+                {Language?.cancel}
+              </_Text>
+            </CancelTouchable>
+          </ButtonContainer>
         </ModalBottomContainer>
       </ModalInnerContainer>
     </ModalContainer>

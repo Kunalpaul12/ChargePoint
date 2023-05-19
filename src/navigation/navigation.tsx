@@ -26,6 +26,7 @@ function HomeNavigation() {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
+        key={'Home'}
         component={Home}
         options={{
           headerShown,
@@ -33,6 +34,7 @@ function HomeNavigation() {
       />
       <HomeStack.Screen
         name="HomeBookDetails"
+        key={'HomeBookDetails'}
         component={Details}
         options={{headerBackTitleVisible: false, headerTitleAlign: 'center'}}
       />
@@ -45,6 +47,7 @@ function SearchNavigation() {
     <SearchStack.Navigator>
       <SearchStack.Screen
         name="Search"
+        key={'Search'}
         component={Search}
         options={{
           headerShown,
@@ -52,6 +55,7 @@ function SearchNavigation() {
       />
       <SearchStack.Screen
         name="Details"
+        key={'Details'}
         component={Details}
         options={{headerBackTitleVisible: false, headerTitleAlign: 'center'}}
       />
